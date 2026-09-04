@@ -1,4 +1,4 @@
-module templateCurry (
+module TemplateCurry (
     CurryProg (..), MName, QName, CVisibility (..), CTVarIName
   , CDefaultDecl (..), CClassDecl (..), CInstanceDecl (..)
   , CTypeDecl (..), CConsDecl (..), CFieldDecl (..)
