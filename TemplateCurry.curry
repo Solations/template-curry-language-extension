@@ -10,20 +10,27 @@ module TemplateCurry (
 
 data Env = Env Int
 
-newtype Q a = Q (Env -> IO a)
+newtype Q a = Q { runQ :: Env -> IO (a, Env) }
 
 instance Functor Q where
-  fmap f (Q g) = Q (\env -> fmap f (g env))
+  fmap f (Q g) = Q (\env -> do
+    (a, env') <- g env
+    return (f a, env'))
 
 instance Applicative Q where
-  pure x = Q (\_ -> pure x)
-  Q f <*> Q g = Q (\env -> f env <*> g env)
+  pure x = Q (\env -> return (x, env))
+  Q f <*> Q g = Q(\env -> do
+   (h, env') <- f env
+   (i, env'') <- g env'
+   return (h i, env''))
 
 instance Monad Q where
-  Q f >>= g = Q (\env -> f env >>= \a -> case g a of Q h -> h env)
+  Q f >>= g = Q (\env -> do
+    (h, env') <- f env
+    runQ (g h) env')
 
 qtoIO :: Q a -> IO a
-qtoIO (Q f) = f (Env 0)
+qtoIO (Q f) = fst <$> f (Env 0)
 
 ---------------------------------------------------------------------------------------
 -- Name generators
