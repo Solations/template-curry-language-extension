@@ -1,12 +1,7 @@
 module TemplateCurry (
-    CurryProg (..), MName, QName, CVisibility (..), CTVarIName
-  , CDefaultDecl (..), CClassDecl (..), CInstanceDecl (..)
-  , CTypeDecl (..), CConsDecl (..), CFieldDecl (..)
-  , CConstraint, CContext (..), CFunDep, CTypeExpr (..), CQualTypeExpr (..)
-  , COpDecl (..), CFixity (..), Arity, CFuncDecl (..), CRhs (..), CRule (..)
-  , CLocalDecl (..), CVarIName, CExpr (..), CCaseType (..), CStatement (..)
-  , CPattern (..), CLiteral (..), CField, Q(..), qtoIO, mkName, mkGlobalName
-  , newName) 
+    module AbstractCurry.Types
+    , module AbstractCurry.Build
+    , qtoIO, mkName, mkGlobalName, newName) 
   where
 
 import AbstractCurry.Types
