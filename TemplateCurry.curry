@@ -5,7 +5,8 @@ module TemplateCurry (
   , CConstraint, CContext (..), CFunDep, CTypeExpr (..), CQualTypeExpr (..)
   , COpDecl (..), CFixity (..), Arity, CFuncDecl (..), CRhs (..), CRule (..)
   , CLocalDecl (..), CVarIName, CExpr (..), CCaseType (..), CStatement (..)
-  , CPattern (..), CLiteral (..), CField, Q(..), qtoIO) 
+  , CPattern (..), CLiteral (..), CField, Q(..), qtoIO, mkName, mkGlobalName
+  , newName) 
   where
 
 data Env = Env Int
