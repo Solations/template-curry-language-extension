@@ -1,7 +1,7 @@
 module TemplateCurry (
     module AbstractCurry.Types
     , module AbstractCurry.Build
-    , qtoIO, mkName, mkGlobalName, newName) 
+    , qtoIO, mkName, mkGlobalName, newName, Q(..)) 
   where
 
 import AbstractCurry.Types
